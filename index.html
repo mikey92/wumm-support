@@ -1,248 +1,283 @@
 <!doctype html>
-  <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <title>WUMM Support</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- SEO / 공유 메타 -->
-    <meta name="description" content="WUMM 앱의 사용 가이드, FAQ를 
-  확인하세요.">
-    <meta property="og:title" content="WUMM Support">
-    <meta property="og:description" content="앱 사용 가이드 · FAQ">
-    <meta property="og:type" content="website">
-    <link rel="icon" href="favicon.png">
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>우쥬메리미 (WUMM) Support</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
+  <!-- SEO / 공유 메타 -->
+  <meta name="description" content="우쥬메리미(WUMM) 웨딩플래너 앱의 사용 가이드, FAQ, 개인정보처리방침을 확인하세요.">
+  <meta property="og:title" content="우쥬메리미 (WUMM) Support">
+  <meta property="og:description" content="커플을 위한 웨딩 플래너 · 사용 가이드 · FAQ">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.png">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #1f2937;
+      --muted: #6b7280;
+      --brand: #c44569;
+      --brand-light: #ff6b9d;
+      --card: #fdf2f4;
+      --border: #f3d5dc;
+    }
+    @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #ffffff;
-        --fg: #1f2937;
-        --muted: #6b7280;
-        --brand: #6c8cff;
-        --card: #f8fafc;
-        --border: #e5e7eb;
+        --bg: #0b1220;
+        --fg: #e5e7eb;
+        --muted: #9aa4b2;
+        --brand: #ff6b9d;
+        --brand-light: #ff8fb5;
+        --card: #1a0f14;
+        --border: #2d1a22;
       }
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #0b1220;
-          --fg: #e5e7eb;
-          --muted: #9aa4b2;
-          --brand: #8aa2ff;
-          --card: #0f1629;
-          --border: #1c2336;
-        }
-      }
-      * { box-sizing: border-box; }
-      html, body { margin:0; padding:0; background:var(--bg); 
-  color:var(--fg); 
-        font:16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", 
-  Roboto, 
-        "Noto Sans KR", Arial, "Apple SD Gothic Neo", "Malgun Gothic", 
-  sans-serif; }
-      a { color: var(--brand); text-decoration: none; }
-      a:hover { text-decoration: underline; }
-      .container { max-width: 960px; padding: 24px; margin: 0 auto; }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; background:var(--bg); color:var(--fg);
+      font:16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Noto Sans KR", Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 960px; padding: 24px; margin: 0 auto; }
 
-      header { border-bottom: 1px solid var(--border); 
-        background: linear-gradient(180deg, rgba(108,140,255,.08), 
-  transparent); }
-      .nav { display:flex; gap:16px; align-items:center; justify-content: 
-  space-between; 
-        padding: 14px 24px; }
-      .nav .links a { color: var(--muted); margin-left: 14px; font-weight:
-   600; }
-      .hero { padding: 48px 24px 24px; }
-      .hero h1 { font-size: 36px; margin: 0 0 8px; letter-spacing: 
-  -0.02em; }
-      .hero p { margin: 0; color: var(--muted); }
+    header { border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(196,69,105,.08), transparent); }
+    .nav { display:flex; gap:16px; align-items:center; justify-content: space-between;
+      padding: 14px 24px; flex-wrap: wrap; }
+    .nav .links a { color: var(--muted); margin-left: 14px; font-weight: 600; }
+    .hero { padding: 48px 24px 24px; }
+    .hero h1 { font-size: 36px; margin: 0 0 8px; letter-spacing: -0.02em; }
+    .hero .sub { margin: 0; color: var(--muted); }
+    .hero .badge { display: inline-block; background: var(--brand); color: #fff;
+      font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 20px;
+      margin-top: 12px; }
 
-      section { padding: 32px 0; border-bottom: 1px solid var(--border); }
-      section h2 { font-size: 22px; margin: 0 0 16px; }
-      .grid { display: grid; gap: 16px; }
-      @media (min-width: 720px) { 
-        .grid.cols-2 { grid-template-columns: 1fr 1fr; } 
-        .grid.cols-3 { grid-template-columns: repeat(3,1fr); } 
-      }
+    section { padding: 32px 0; border-bottom: 1px solid var(--border); }
+    section h2 { font-size: 22px; margin: 0 0 16px; }
+    .grid { display: grid; gap: 16px; }
+    @media (min-width: 720px) {
+      .grid.cols-2 { grid-template-columns: 1fr 1fr; }
+      .grid.cols-3 { grid-template-columns: repeat(3,1fr); }
+    }
 
-      .card { background: var(--card); border: 1px solid var(--border); 
-        border-radius: 12px; padding: 16px; }
-      .card h3 { margin: 0 0 8px; font-size: 18px; }
-      .card p, .card ul, .card ol { margin: 8px 0; }
-      .muted { color: var(--muted); }
+    .card { background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px; }
+    .card h3 { margin: 0 0 8px; font-size: 18px; }
+    .card p, .card ul, .card ol { margin: 8px 0; }
+    .muted { color: var(--muted); }
+    .icon { font-size: 28px; margin-bottom: 8px; display: block; }
 
-      .screenshots { display: grid; gap: 16px; margin: 16px 0; }
-      @media (min-width: 720px) { 
-        .screenshots { grid-template-columns: repeat(auto-fit, 
-  minmax(200px, 1fr)); } 
-      }
-      .screenshot { border-radius: 12px; overflow: hidden; border: 1px 
-  solid var(--border); }
-      .screenshot img { width: 100%; height: auto; display: block; }
+    footer { padding: 24px; color: var(--muted); text-align: center; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <strong>💒 우쥬메리미 Support</strong>
+      <nav class="links">
+        <a href="#start">시작하기</a>
+        <a href="#features">기능</a>
+        <a href="#faq">FAQ</a>
+        <a href="#privacy">개인정보</a>
+        <a href="#contact">문의</a>
+      </nav>
+    </div>
+    <div class="container hero">
+      <h1>우쥬메리미 (WUMM)</h1>
+      <p class="sub">커플을 위한 올인원 웨딩 플래너</p>
+      <span class="badge">Wedding Planner for Couples</span>
+    </div>
+  </header>
 
-      footer { padding: 24px; color: var(--muted); text-align: center; }
-    </style>
-  </head>
-  <body>
-    <header>
-      <div class="nav">
-        <strong>WUMM Support</strong>
-        <nav class="links">
-          <a href="#start">시작하기</a>
-          <a href="#faq">FAQ</a>
-          <a href="#privacy">개인정보처리방침</a>
-          <a href="#contact">문의</a>
-        </nav>
-      </div>
-      <div class="container hero">
-        <h1>WUMM Support</h1>
-        <p>앱 사용 가이드 · FAQ</p>
-      </div>
-    </header>
-
-    <main class="container">
-      <!-- 시작하기 -->
-      <section id="start">
-        <h2>시작하기</h2>
-        <div class="grid cols-2">
-          <div class="card">
-            <h3>기본 개념</h3>
-            <p class="muted">WUMM는 생산성 앱으로, 직관적인 
-  인터페이스와 강력한 기능을 제공합니다.</p>
-          </div>
-          <div class="card">
-            <h3>빠른 시작</h3>
-            <ol>
-              <li>앱을 다운로드하고 실행</li>
-              <li>간단한 설정 완료</li>
-              <li>바로 사용 시작</li>
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      
-
-      <!-- 주요 기능 -->
-      <section id="features">
-        <h2>주요 기능</h2>
-        <div class="grid cols-3">
-          <div class="card">
-            <strong>간편한 사용</strong>
-            <p class="muted">직관적인 UI로 누구나 쉽게 사용</p>
-          </div>
-          <div class="card">
-            <strong>데이터 동기화</strong>
-            <p class="muted">기기 간 자동 동기화 지원</p>
-          </div>
-          <div class="card">
-            <strong>안전한 보관</strong>
-            <p class="muted">클라우드에 안전하게 저장</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- FAQ -->
-      <section id="faq">
-        <h2>자주 묻는 질문(FAQ)</h2>
-        <div class="grid">
-          <div class="card">
-            <h3>데이터는 어디에 저장되나요?</h3>
-            <p class="muted">모든 데이터는 Firebase에 안전하게 저장되며, 
-  기기 간 자동 동기화됩니다.</p>
-          </div>
-          <div class="card">
-            <h3>오프라인에서도 사용할 수 있나요?</h3>
-            <p class="muted">네, 한 번 다운로드한 데이터는 오프라인에서도 
-  사용할 수 있습니다.</p>
-          </div>
-          <div class="card">
-            <h3>광고를 제거하고 싶어요.</h3>
-            <p class="muted">앱 내 설정에서 프리미엄 구독을 통해 광고를 
-  제거할 수 있습니다.</p>
-          </div>
-          <div class="card">
-            <h3>계정을 삭제하려면?</h3>
-            <p class="muted">앱 내 설정 > 계정 관리에서 계정 삭제를 요청할
-   수 있습니다.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 개인정보처리방침 -->
-      <section id="privacy">
-        <h2>개인정보처리방침</h2>
+  <main class="container">
+    <!-- 시작하기 -->
+    <section id="start">
+      <h2>시작하기</h2>
+      <div class="grid cols-2">
         <div class="card">
-          <h3>1. 수집하는 개인정보</h3>
-          <ul>
-            <li><strong>회원가입 시</strong>: 이메일 주소, 닉네임</li>
-            <li><strong>자동 수집</strong>: 디바이스 UUID, 플랫폼 
-  정보(iOS), 앱 사용 기록</li>
-            <li><strong>사용 데이터</strong>: 앱 내 활동 기록</li>
-            <li>모든 데이터는 Firebase를 통해 암호화되어 저장됩니다</li>
-          </ul>
-          
-          <h3>2. 개인정보의 처리 목적</h3>
-          <ul>
-            <li>회원 관리 및 본인 확인</li>
-            <li>데이터 저장 및 기기 간 동기화</li>
-            <li>앱 사용 통계 분석(Firebase Analytics)</li>
-            <li>서비스 개선을 위한 사용자 피드백 수집</li>
-          </ul>
-          
-          <h3>3. 개인정보의 제3자 제공</h3>
-          <ul>
-            <li><strong>Firebase (Google)</strong><br>
-                제공 항목: 이메일, 사용 데이터, 디바이스 정보<br>
-                제공 목적: 데이터 저장, 동기화, 통계 분석<br>
-                보유 기간: 회원 탈퇴 시까지
-            </li>
-          </ul>
-          
-          <h3>4. 개인정보의 보유 및 파기</h3>
-          <ul>
-            <li>회원 탈퇴 시 즉시 삭제 (법령에 의한 보관 의무 제외)</li>
-            <li>미사용 계정: 1년 미접속 시 별도 저장 후 파기</li>
-          </ul>
-          
-          <h3>5. 이용자의 권리</h3>
-          <ul>
-            <li>개인정보 열람, 수정, 삭제 요청 가능</li>
-            <li>앱 내 설정에서 계정 삭제 가능</li>
-          </ul>
-          
-          <h3>6. 개인정보 보호책임자</h3>
-          <ul>
-            <li>회사: (주)BCD</li>
-            <li>이메일: support@wumm.app</li>
-          </ul>
-          
-          <h3>7. 개인정보처리방침 변경</h3>
-          <ul>
-            <li>변경 시 앱 내 공지 및 이메일 통지</li>
-            <li>시행일: 2025년 1월 1일</li>
-          </ul>
+          <h3>💒 우쥬메리미란?</h3>
+          <p class="muted">우쥬메리미(WUMM)는 예비 부부를 위한 웨딩 플래너 앱입니다. 파트너와 함께 결혼 준비 과정을 체계적으로 관리하고, 커뮤니티에서 다른 예비 부부들과 정보를 공유할 수 있습니다.</p>
         </div>
-      </section>
-
-      <!-- 문의 -->
-      <section id="contact">
-        <h2>문의</h2>
         <div class="card">
-          <p class="muted">버그 제보 및 기능 제안은 앱 내 설정 > 
-  문의하기를 이용해 주세요.</p>
-          <p class="muted">이메일: <a 
-  href="mailto:support@wumm.app">support@wumm.app</a></p>
+          <h3>🚀 빠른 시작</h3>
+          <ol>
+            <li>앱을 다운로드하고 회원가입</li>
+            <li>파트너 코드를 공유해 커플 연결</li>
+            <li>결혼 예정일을 설정</li>
+            <li>체크리스트, 예산, 일정 관리 시작!</li>
+          </ol>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
-    <footer>
-      © <span id="year"></span> WUMM. All rights reserved.
-    </footer>
+    <!-- 주요 기능 -->
+    <section id="features">
+      <h2>주요 기능</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <span class="icon">📋</span>
+          <strong>웨딩 체크리스트</strong>
+          <p class="muted">결혼 준비에 필요한 할 일을 체크리스트로 관리하고 진행률을 한눈에 확인하세요.</p>
+        </div>
+        <div class="card">
+          <span class="icon">💰</span>
+          <strong>예산 관리</strong>
+          <p class="muted">웨딩 예산을 카테고리별로 관리하고 지출 현황을 파트너와 실시간으로 공유하세요.</p>
+        </div>
+        <div class="card">
+          <span class="icon">📅</span>
+          <strong>웨딩 캘린더</strong>
+          <p class="muted">웨딩 관련 일정을 관리하고 디바이스 캘린더에 자동 동기화할 수 있습니다.</p>
+        </div>
+        <div class="card">
+          <span class="icon">💬</span>
+          <strong>커뮤니티</strong>
+          <p class="muted">다른 예비 부부들과 웨딩 팁, 후기, 고민을 나눌 수 있는 커뮤니티입니다.</p>
+        </div>
+        <div class="card">
+          <span class="icon">💕</span>
+          <strong>커플 연동</strong>
+          <p class="muted">파트너 코드로 쉽게 연결하고, 모든 웨딩 준비 데이터를 실시간으로 공유하세요.</p>
+        </div>
+        <div class="card">
+          <span class="icon">⏰</span>
+          <strong>D-Day 카운트다운</strong>
+          <p class="muted">결혼식까지 남은 날짜를 홈 화면에서 바로 확인할 수 있습니다.</p>
+        </div>
+      </div>
 
-    <script>
-      document.getElementById('year').textContent = new 
-  Date().getFullYear();
-    </script>
-  </body>
-  </html>
+      <div class="grid cols-3" style="margin-top:16px;">
+        <div class="card">
+          <span class="icon">👥</span>
+          <strong>하객 관리</strong>
+          <p class="muted">하객 명단을 관리하고 인원수를 파악할 수 있습니다.</p>
+        </div>
+        <div class="card">
+          <span class="icon">🏪</span>
+          <strong>업체 관리</strong>
+          <p class="muted">웨딩 관련 업체(스드메, 본식 등) 정보를 정리하고 관리하세요.</p>
+        </div>
+        <div class="card">
+          <span class="icon">🔔</span>
+          <strong>알림</strong>
+          <p class="muted">중요한 일정과 파트너의 활동을 푸시 알림으로 받아보세요.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <h2>자주 묻는 질문(FAQ)</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>파트너와 어떻게 연결하나요?</h3>
+          <p class="muted">설정 > 커플 정보에서 파트너 코드를 확인하고 공유하세요. 파트너가 해당 코드를 입력하면 자동으로 연결됩니다. 연결 후 모든 데이터가 실시간으로 공유됩니다.</p>
+        </div>
+        <div class="card">
+          <h3>데이터는 어디에 저장되나요?</h3>
+          <p class="muted">모든 데이터는 Firebase에 암호화되어 안전하게 저장되며, 파트너와 실시간 동기화됩니다.</p>
+        </div>
+        <div class="card">
+          <h3>캘린더 동기화는 어떻게 하나요?</h3>
+          <p class="muted">설정 > 캘린더에서 동기화를 켜면 웨딩 일정이 디바이스 캘린더에 자동으로 추가됩니다. 캘린더 접근 권한 허용이 필요합니다.</p>
+        </div>
+        <div class="card">
+          <h3>커뮤니티에서 부적절한 콘텐츠를 발견하면?</h3>
+          <p class="muted">게시글이나 댓글의 신고 기능을 이용해 주세요. 신고된 콘텐츠는 24시간 내 검토됩니다. 특정 사용자를 차단할 수도 있습니다.</p>
+        </div>
+        <div class="card">
+          <h3>계정을 삭제하려면?</h3>
+          <p class="muted">더보기 > 설정 > 데이터에서 계정 삭제를 요청할 수 있습니다. 삭제 시 모든 데이터가 영구적으로 제거됩니다.</p>
+        </div>
+        <div class="card">
+          <h3>카카오 계정으로 로그인할 수 있나요?</h3>
+          <p class="muted">네, 이메일/비밀번호 또는 카카오 계정으로 간편하게 로그인할 수 있습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 개인정보처리방침 -->
+    <section id="privacy">
+      <h2>개인정보처리방침</h2>
+      <div class="card">
+        <h3>1. 수집하는 개인정보</h3>
+        <ul>
+          <li><strong>회원가입 시</strong>: 이메일 주소, 닉네임</li>
+          <li><strong>카카오 로그인 시</strong>: 카카오 계정 정보(이메일, 프로필)</li>
+          <li><strong>자동 수집</strong>: 디바이스 UUID, 플랫폼 정보(iOS), 앱 사용 기록</li>
+          <li><strong>서비스 이용 시</strong>: 체크리스트, 예산, 일정, 하객, 업체 정보, 커뮤니티 게시글</li>
+          <li>모든 데이터는 Firebase를 통해 암호화되어 저장됩니다</li>
+        </ul>
+
+        <h3>2. 개인정보의 처리 목적</h3>
+        <ul>
+          <li>회원 관리 및 본인 확인</li>
+          <li>커플 연동 및 파트너 간 데이터 공유</li>
+          <li>웨딩 준비 데이터 저장 및 기기 간 동기화</li>
+          <li>커뮤니티 서비스 제공 및 콘텐츠 관리</li>
+          <li>푸시 알림 발송 (FCM)</li>
+          <li>앱 사용 통계 분석 (Firebase Analytics)</li>
+          <li>서비스 개선을 위한 사용자 피드백 수집</li>
+        </ul>
+
+        <h3>3. 개인정보의 제3자 제공</h3>
+        <ul>
+          <li><strong>Firebase (Google)</strong><br>
+              제공 항목: 이메일, 사용 데이터, 디바이스 정보<br>
+              제공 목적: 데이터 저장, 동기화, 푸시 알림, 통계 분석<br>
+              보유 기간: 회원 탈퇴 시까지
+          </li>
+          <li><strong>Kakao</strong><br>
+              제공 항목: 카카오 계정 연동 정보<br>
+              제공 목적: 소셜 로그인<br>
+              보유 기간: 회원 탈퇴 시까지
+          </li>
+        </ul>
+
+        <h3>4. 개인정보의 보유 및 파기</h3>
+        <ul>
+          <li>회원 탈퇴 시 즉시 삭제 (법령에 의한 보관 의무 제외)</li>
+          <li>미사용 계정: 1년 미접속 시 별도 저장 후 파기</li>
+        </ul>
+
+        <h3>5. 이용자의 권리</h3>
+        <ul>
+          <li>개인정보 열람, 수정, 삭제 요청 가능</li>
+          <li>앱 내 설정에서 이름 수정 및 계정 삭제 가능</li>
+          <li>알림 수신 여부 설정 가능</li>
+        </ul>
+
+        <h3>6. 개인정보 보호책임자</h3>
+        <ul>
+          <li>회사: (주)BCD</li>
+          <li>이메일: <a href="mailto:support@wumm.app">support@wumm.app</a></li>
+        </ul>
+
+        <h3>7. 개인정보처리방침 변경</h3>
+        <ul>
+          <li>변경 시 앱 내 공지 및 이메일 통지</li>
+          <li>시행일: 2025년 1월 1일</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 문의 -->
+    <section id="contact">
+      <h2>문의</h2>
+      <div class="card">
+        <p class="muted">버그 제보 및 기능 제안은 앱 내 <strong>더보기 > 피드백</strong>을 이용해 주세요.</p>
+        <p class="muted">이메일: <a href="mailto:support@wumm.app">support@wumm.app</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> 우쥬메리미 (WUMM). All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
