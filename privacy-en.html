@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -54,16 +54,17 @@
 <body>
   <main>
     <h1>WUMM Privacy Policy</h1>
-    <p class="muted">Effective date: July 5, 2026</p>
+    <p class="muted">Effective date: July 15, 2026</p>
     <p>WUMM ("we", "our") is a wedding planning app for couples, operated by BCD Inc. This policy explains what information we collect, how we use it, and the choices you have.</p>
 
     <h2>1. Information We Collect</h2>
     <div class="card">
       <ul>
-        <li><strong>Account information</strong>: email address and display name when you sign up with email, Sign in with Apple, or Google Sign-In</li>
-        <li><strong>Automatically collected</strong>: device identifier, platform information (iOS), and app usage records</li>
-        <li><strong>Content you create</strong>: checklists, budgets, schedules, guest lists, vendor information, wedding invitations, and community posts</li>
-        <li>All data is stored encrypted through Firebase (Google Cloud)</li>
+        <li><strong>Account and sign-in information</strong>: email address, display name, profile image, Firebase user ID, and identifiers from the Apple, Google, or Kakao sign-in provider you choose</li>
+        <li><strong>Wedding planning, contact, and financial information</strong>: couple-link data, checklists, budgets and payment records, schedules and locations, guest names/contact details/RSVP/dietary restrictions/gift amounts, vendor contact details/addresses/costs, and invitation names/event details/bank-account notices</li>
+        <li><strong>User content</strong>: community posts, comments and images; invitation, thank-you card and guest-gallery photos; receipts, contracts and other uploaded files; reports and feedback</li>
+        <li><strong>Automatically collected information</strong>: app or installation identifiers and FCM token, app/iOS version and device model, screen and feature interactions, crash and diagnostic data, IP address, and network/browser information</li>
+        <li><strong>Public web pages</strong>: visits to public pages, including brand, app-download bridge, and invitation pages, generate Cloudflare request logs. On brand and app-download bridge pages, Meta Pixel PageView data may include browser/device information, IP address, and cookies or similar identifiers set by Meta.</li>
       </ul>
     </div>
 
@@ -72,11 +73,13 @@
       <ul>
         <li>Account management and identity verification</li>
         <li>Couple linking and data sharing between partners</li>
-        <li>Storing your wedding planning data and syncing it across devices</li>
+        <li>Storing and syncing wedding planning data and providing public invitations and guest galleries</li>
         <li>Providing community features and managing content</li>
         <li>Sending push notifications (Firebase Cloud Messaging)</li>
-        <li>App usage analytics (Firebase Analytics)</li>
-        <li>Collecting feedback to improve the service</li>
+        <li>App analytics and public-invitation visit or campaign measurement</li>
+        <li>Crash diagnostics, security, abuse prevention, and service reliability</li>
+        <li>Extracting vendor fields from on-device OCR text through Workers AI</li>
+        <li>Handling support requests and feedback</li>
       </ul>
     </div>
 
@@ -84,24 +87,28 @@
     <div class="card">
       <p>We do not sell your personal information. We share data only with the service providers below, to operate the app:</p>
       <ul>
-        <li><strong>Firebase (Google)</strong><br>
-            Data shared: email, usage data, device information<br>
-            Purpose: data storage, sync, push notifications, analytics<br>
-            Retention: until account deletion
-        </li>
-        <li><strong>Apple / Google (sign-in providers)</strong><br>
-            Data shared: sign-in credentials for the provider you choose<br>
-            Purpose: social login<br>
-            Retention: until account deletion
-        </li>
+        <li><strong>Google Firebase</strong> — Auth, Firestore, Storage, Cloud Functions, Analytics, Crashlytics, and Cloud Messaging provide authentication, storage and sync, server processing, analytics, crash diagnostics, and push notifications. Account data, user content, usage/device identifiers, and diagnostics are processed as needed for those features.</li>
+        <li><strong>Apple and Google</strong> — authenticate the social sign-in method you choose and process the provider identifier and any name, email, or profile information you authorize.</li>
+        <li><strong>Kakao</strong> — provides the Kakao sign-in method you choose and the place/address search API. Kakao processes the provider identifier and any name, email, or profile information you authorize for sign-in. For place/address searches, the search terms you enter and network request metadata accompanying the API request are sent to Kakao, which returns place names, addresses, and coordinates.</li>
+        <li><strong>Cloudflare Workers, R2, and Workers AI</strong> — host public invitation pages, store owner and guest photos, validate Firebase tokens, and extract vendor fields from receipt/contract text recognized on the device. Photos, recognized OCR text, IP addresses, and request metadata are processed as applicable. For place search, the Firebase UID is used only within Cloudflare for authentication and per-user rate limiting and is not sent to Kakao.</li>
+        <li><strong>Slack</strong> — receives in-app feedback and operational alerts for new fatal and non-fatal Crashlytics issues. Feedback includes the message, a one-way hashed user reference, app/iOS version, and device model; it does not include the user's email or display name. Issue alerts may include the platform, issue title or subtitle, app version, and a Firebase Console link.</li>
+        <li><strong>Meta Pixel</strong> — measures PageView and visit/campaign performance on public brand and app-download bridge pages. Meta may process browser/device information, IP addresses, and cookies or similar identifiers under its own policy.</li>
       </ul>
     </div>
 
     <h2>4. Data Retention and Deletion</h2>
     <div class="card">
       <ul>
-        <li>Your data is deleted immediately when you delete your account (except where retention is required by law)</li>
-        <li>Inactive accounts: after 1 year of inactivity, data is stored separately and then destroyed</li>
+        <li>When account deletion completes, we delete the account/profile, community posts, comments, and images authored by the departing user, shared files and photos uploaded by that user, and wedding-planning data for a couple with no remaining partner, except for minimum records required for law, security, or dispute resolution.</li>
+        <li>If a linked partner remains, shared wedding-planning records may remain available to that partner. We replace the departing user's creator or uploader identifiers in retained joint records with a de-identified value and clear items assigned to that user. We also remove that user's identifiers and name from likes, views, and structured mentions in other users' community content, and remove the account link and access.</li>
+        <li>After server data and external-storage deletion and de-identification succeed, the server deletes the Firebase Authentication account as its final server-side step. The callable reports success only after that deletion is confirmed. After confirmed success, the app only signs out locally. If an external-file or finalization step fails, the callable does not report success and the user can retry.</li>
+        <li>At account deletion, we retain only a server-only Firebase UID deletion lock to prevent stale Firebase ID tokens from recreating the profile. It contains no profile or content fields, expires after 24 hours, and Firestore TTL normally removes the document within roughly another 24 hours.</li>
+        <li>A retired public invitation URL slug is retained as a tombstone to prevent that URL from being reused. Invitation, couple, and account IDs are removed from the tombstone.</li>
+        <li>Hashed slug-conflict diagnostic records that contain no raw identifiers are deleted after 30 days.</li>
+        <li>Invitation cover, invitation-gallery, and thank-you-card photos uploaded by the invitation owner are scheduled for deletion seven days after the wedding, after a notice on day four.</li>
+        <li>Guest-gallery photos are scheduled for deletion 31 days after the wedding.</li>
+        <li>An invitation and guest gallery without a wedding date are retained until 180 days have passed since the latest invitation edit or guest-photo upload. We then notify the owner and allow at least three days before deleting both owner and guest photos and disabling the guest gallery. Invitation or gallery activity after notice, or setting or moving the wedding date, cancels the stale-inactivity notice and recalculates the retention schedule.</li>
+        <li>Limited backups or security logs may remain under the operational or legal retention periods of Firebase, Cloudflare, Slack, and Meta.</li>
       </ul>
     </div>
 
@@ -110,7 +117,10 @@
       <ul>
         <li>You may request access to, correction of, or deletion of your personal information</li>
         <li>You can edit your name and delete your account in the app's Settings</li>
-        <li>You can turn push notifications on or off at any time</li>
+        <li>You can turn push notifications off in iOS Settings and disable calendar sync in the app or revoke calendar access in iOS Settings.</li>
+        <li>You may revoke Apple, Google, or Kakao access in the provider's settings. You must separately delete your WUMM account to delete WUMM-held data.</li>
+        <li>You can limit Meta Pixel on public brand and app-download bridge pages through browser tracking protection or third-party cookie blocking.</li>
+        <li>You may withdraw consent for optional processing or make additional privacy requests through the in-app Feedback menu. Withdrawing processing required to operate the account may require account deletion.</li>
         <li>Depending on where you live (for example, California), you may have additional rights under local privacy laws, including the right to know what personal information we collect and the right to request its deletion. We honor these requests for all users.</li>
       </ul>
     </div>
